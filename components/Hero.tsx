@@ -62,10 +62,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 min-h-[calc(100vh-5rem)] flex flex-col justify-center">
-        {/* Slide Counter */}
-        <div className="absolute top-8 right-4 sm:right-8 bg-navy/80 text-white px-3 py-1 rounded text-sm">
-          {currentSlide + 1} / {heroImages.length}
-        </div>
+        
 
         {/* Navigation Arrows */}
         <button
