@@ -34,6 +34,10 @@ export const metadata: Metadata = {
   description:
     "Samish Homes and Apartments — Discover premium residential properties across Abuja's finest locations. Terrace duplexes, luxury villas and master-planned estates.",
   metadataBase: new URL("https://samishhomes.vercel.app"),
+   themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0B1C2D" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B1C2D" },
+  ],
   icons: {
     icon: [
       { url: "/favicon.ico" },
