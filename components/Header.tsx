@@ -20,21 +20,17 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-20 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center mt-3 gap-1">
             <Image
-              src="https://ext.same-assets.com/2617002787/3511556923.svg"
+              src="logo.png"
               alt="Samish Homes Logo"
-              width={40}
+              width={30}
               height={40}
-              className="w-40 h-30"
+              className="w-50 h-25"
             />
-            <div className="text-white hidden md:block">
-              <span className="font-bold text-sm tracking-wide">SAMISH HOMES</span>
-              <br />
-              <span className="text-xs tracking-widest text-white/80">AND APARTMENTS</span>
-            </div>
+            
           </Link>
 
           {/* Desktop Navigation */}
