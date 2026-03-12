@@ -7,6 +7,7 @@ import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/effect-fade";
+import Image from "next/image";
 
 const heroData = [
   {
@@ -79,9 +80,10 @@ export default function Hero() {
           {heroData.map((item) => (
             <SwiperSlide key={item.id} className="h-full w-full">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={item.img}
                 alt={`Samish Homes slide ${item.id}`}
+                fill
                 className="w-full h-full object-cover"
               />
             </SwiperSlide>
