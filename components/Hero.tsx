@@ -15,7 +15,7 @@ const heroData = [
     headingAccent: "IT'S A FEELING....",
     subText:
       "Find your happy place with Samish Homes and Apartments; We deliver timely with commitment and your rest of mind in every square meter.",
-    img: "https://ext.same-assets.com/2617002787/1319706308.jpeg",
+    img: "/bana1.png",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const heroData = [
     headingAccent: "DREAM HOME...",
     subText:
       "We deliver your Dream home, Residential properties across Abuja's finest locations. From terrace duplexes to luxury mansions, Samish Homes and Apartments deliver the desired keys.",
-    img: "https://ext.same-assets.com/2617002787/4026451409.jpeg",
+    img: "/bana2.png",
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const heroData = [
     headingAccent: "YOUR HAPPY PLACE....",
     subText:
       "Your dream home, crafted with excellence and Elegance in mind specially for your comfort.",
-    img: "https://ext.same-assets.com/2617002787/3904350765.jpeg",
+    img: "/bana3.png",
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ const heroData = [
     headingAccent: "SAMISH HOMES AND APARTMENTS....",
     subText:
       "Where every door opens to a new possibility for everyone, regardless of your class or status.",
-    img: "https://ext.same-assets.com/2617002787/4001650424.jpeg",
+    img: "/bana4.png",
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const heroData = [
     headingAccent: "EXPERIENCE LIFE WITH PEACE OF MIND...",
     subText:
       "Home is not just a place, it's a feeling. Elevate your desired lifestyle with Samish Homes and Apartments today.",
-    img: "https://ext.same-assets.com/2617002787/1319706308.jpeg",
+    img: "/bana5.png",
   },
 ];
 
