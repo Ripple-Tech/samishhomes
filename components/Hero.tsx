@@ -1,15 +1,54 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/effect-fade";
 
-const heroImages = [
-  "https://ext.same-assets.com/2617002787/1319706308.jpeg",
-  "https://ext.same-assets.com/2617002787/4026451409.jpeg",
-  "https://ext.same-assets.com/2617002787/3904350765.jpeg",
-  "https://ext.same-assets.com/2617002787/4001650424.jpeg",
+const heroData = [
+  {
+    id: 1,
+    heading: "HOME IS NOT JUST A PLACE,",
+    headingAccent: "IT'S A FEELING....",
+    subText:
+      "Find your happy place with Samish Homes and Apartments; We deliver timely with commitment and your rest of mind in every square meter.",
+    img: "https://ext.same-assets.com/2617002787/1319706308.jpeg",
+  },
+  {
+    id: 2,
+    heading: "WE UNLOCK YOUR",
+    headingAccent: "DREAM HOME...",
+    subText:
+      "We deliver your Dream home, Residential properties across Abuja's finest locations. From terrace duplexes to luxury mansions, Samish Homes and Apartments deliver the desired keys.",
+    img: "https://ext.same-assets.com/2617002787/4026451409.jpeg",
+  },
+  {
+    id: 3,
+    heading: "YOUR DREAM HOME,",
+    headingAccent: "YOUR HAPPY PLACE....",
+    subText:
+      "Your dream home, crafted with excellence and Elegance in mind specially for your comfort.",
+    img: "https://ext.same-assets.com/2617002787/3904350765.jpeg",
+  },
+  {
+    id: 4,
+    heading: "START YOUR PROPERTY JOURNEY TODAY WITH",
+    headingAccent: "SAMISH HOMES AND APARTMENTS....",
+    subText:
+      "Where every door opens to a new possibility for everyone, regardless of your class or status.",
+    img: "https://ext.same-assets.com/2617002787/4001650424.jpeg",
+  },
+  {
+    id: 5,
+    heading: "EXPERIENCE LUXURY,",
+    headingAccent: "EXPERIENCE LIFE WITH PEACE OF MIND...",
+    subText:
+      "Home is not just a place, it's a feeling. Elevate your desired lifestyle with Samish Homes and Apartments today.",
+    img: "https://ext.same-assets.com/2617002787/1319706308.jpeg",
+  },
 ];
 
 const stats = [
@@ -20,81 +59,62 @@ const stats = [
 ];
 
 export default function Hero() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
-  };
+  const [activeIndex, setActiveIndex] = useState(0);
+  const current = heroData[activeIndex % heroData.length];
 
   return (
-    <section className="relative min-h-screen pt-20">
-      {/* Background Image Carousel */}
-      <div className="absolute inset-0 pt-20">
-        {heroImages.map((img, index) => (
-          <div
-            key={img}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <Image
-              src={img}
-              alt={`Luxury property ${index + 1}`}
-              fill
-              className="object-cover"
-              priority={index === 0}
-            />
-            <div className="absolute inset-0 bg-navy/60" />
-          </div>
-        ))}
+    <section className="relative min-h-screen pt-20 overflow-hidden">
+      {/* ── Swiper Background ── */}
+      <div className="absolute inset-0 top-20">
+        <Swiper
+          modules={[Autoplay, EffectFade]}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          effect="fade"
+          speed={1500}
+          fadeEffect={{ crossFade: true }}
+          loop
+          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+          className="h-full w-full"
+        >
+          {heroData.map((item) => (
+            <SwiperSlide key={item.id} className="h-full w-full">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={item.img}
+                alt={`Samish Homes slide ${item.id}`}
+                className="w-full h-full object-cover"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-navy/65 z-10" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 min-h-[calc(100vh-5rem)] flex flex-col justify-center">
-        
+      {/* ── Overlay Content ── */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 min-h-[calc(100vh-5rem)] flex flex-col justify-center">
 
-        {/* Navigation Arrows */}
-        <button
-          type="button"
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-navy/60 hover:bg-navy/80 text-white flex items-center justify-center transition-colors"
-        >
-          <ChevronLeft size={24} />
-        </button>
-        <button
-          type="button"
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-navy/60 hover:bg-navy/80 text-white flex items-center justify-center transition-colors"
-        >
-          <ChevronRight size={24} />
-        </button>
-
-        {/* Main Content */}
-        <div className="text-center max-w-4xl mx-auto">
-          <span className="inline-block px-6 py-2 bg-gold/90 text-navy font-semibold text-sm tracking-wider rounded-full mb-8">
+        {/* Badge */}
+        <div className="text-center mb-8">
+          <span className="inline-block px-6 py-2 bg-gold/90 text-navy font-semibold text-sm tracking-wider rounded-full">
             PREMIUM REAL ESTATE IN ABUJA
           </span>
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            <span className="italic">Your Dream Home</span>
-            <br />
-            <span className="text-gold italic">Awaits You</span>
+        </div>
+
+        {/* Text — key re-mounts on slide change to retrigger animation */}
+        <div
+          key={activeIndex}
+          className="text-center max-w-4xl mx-auto animate-fade-in-up"
+        >
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            <span className="text-white italic block">{current.heading}</span>
+            <span className="text-gold italic block">{current.headingAccent}</span>
           </h1>
-          <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
-            Discover premium residential properties across Abuja&apos;s finest locations. From
-            terrace duplexes to luxury mansions, Samish Homes and Apartments delivers
-            excellence in every square meter.
+
+          <p className="text-white/85 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-body">
+            {current.subText}
           </p>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/properties"
@@ -111,8 +131,22 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+        {/* Slide dot indicators */}
+        <div className="flex justify-center gap-2 mt-10">
+          {heroData.map((_, i) => (
+            <div
+              key={i}
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                i === activeIndex % heroData.length
+                  ? "w-8 bg-gold"
+                  : "w-3 bg-white/40"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Stats bar */}
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((stat, index) => (
             <div
               key={stat.label}
@@ -120,9 +154,11 @@ export default function Hero() {
                 index === 1 ? "bg-gold/90" : "bg-navy/60 backdrop-blur-sm"
               }`}
             >
-              <div className={`font-display text-3xl md:text-4xl font-bold ${
-                index === 1 ? "text-navy" : "text-gold"
-              } italic mb-1`}>
+              <div
+                className={`font-display text-3xl md:text-4xl font-bold italic mb-1 ${
+                  index === 1 ? "text-navy" : "text-gold"
+                }`}
+              >
                 {stat.value}
               </div>
               <div className={`text-sm ${index === 1 ? "text-navy/80" : "text-white/80"}`}>
