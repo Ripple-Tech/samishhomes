@@ -89,12 +89,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn(
-        inter.variable,
-        eb_garamond.variable,
-        geistSans.variable,
-        geistMono.variable,
-        "scroll-smooth"
-      )}
+              eb_garamond.variable,
+              geistSans.variable,
+              geistMono.variable,
+              "scroll-smooth"
+            , "font-sans", inter.variable)}
     >
         <body suppressHydrationWarning className="antialiased">
         <ClientBody>

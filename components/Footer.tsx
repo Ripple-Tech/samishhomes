@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, Clock, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import Image from "next/image";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -29,13 +30,20 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-gold flex items-center justify-center">
-                <span className="text-navy font-display font-bold text-xl">S</span>
-              </div>
-              <div className="flex flex-col">
+              <div className="w-50 h-25  bg-[#fff] flex items-center justify-center">
+              
+            <Image
+              src="logof.png"
+              alt="Samish Homes Logo"
+              width={25}
+              height={25}
+              className="w-30 h-25"
+            />
+            </div>
+              {/* <div className="flex flex-col">
                 <span className="font-bold text-white text-sm tracking-wide">SAMISH HOMES</span>
                 <span className="text-xs text-white/70 tracking-widest">AND APARTMENTS</span>
-              </div>
+              </div> */}
             </Link>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
               Your trusted partner in premium real estate across Abuja. We deliver exceptional
@@ -120,7 +128,7 @@ export default function Footer() {
                 <Mail className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                 <div className="text-white/70 text-sm">
                   <p>info@samishhomes.com</p>
-                  <p>sales@samishhomes.com</p>
+                  <p>clientsupport@samishhomes.com</p>
                 </div>
               </li>
               <li className="flex gap-3">
