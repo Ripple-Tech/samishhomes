@@ -1,14 +1,118 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
+}
+
+// ─── Enums ────────────────────────────────────────────────────────────────────
+
+enum PropertyType {
+  TERRACE_DUPLEX
+  SEMI_DETACHED_DUPLEX
+  FULLY_DETACHED_DUPLEX
+  DETACHED_BUNGALOW
+  MANSION
+  PENTHOUSE
+  APARTMENT
+  STUDIO
+}
+
+enum PropertyStatus {
+  AVAILABLE
+  SOLD
+  UNDER_OFFER
+  OFF_PLAN
+  COMING_SOON
+}
+
+enum PaymentPlan {
+  OUTRIGHT
+  INSTALLMENT_6_MONTHS
+  INSTALLMENT_12_MONTHS
+  INSTALLMENT_24_MONTHS
+  MORTGAGE
+}
+
+// ─── Models ───────────────────────────────────────────────────────────────────
+
+model Estate {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  name        String     // e.g. "HILLCITY RESIDENCE"
+  slug        String     @unique
+  description String?
+  address     String?
+  city        String     @default("Abuja")
+  state       String     @default("FCT")
+  latitude    Float?
+  longitude   Float?
+  coverImage  String?
+  images      String[]
+  featured    Boolean    @default(false)
+  properties  Property[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Property {
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  title        String         // e.g. "Terrace Duplex - 250 SQM"
+  slug         String         @unique
+  description  String?
+
+  // Classification
+  type         PropertyType
+  status       PropertyStatus @default(AVAILABLE)
+
+  // Size & Specs
+  size         String         // e.g. "250 SQM" — display label
+  areaSqm      Float          // numeric value for filtering
+  beds         Int
+  baths        Int
+  toilets      Int?
+  floors       Int?           @default(1)
+  parking      Int?           @default(1)
+
+  // Pricing
+  priceLabel   String         // e.g. "45M" — display label
+  priceValue   Float          // numeric value (in Naira) for sorting/filtering
+  paymentPlans PaymentPlan[]
+
+  // Media
+  images       String[]       // array of image URLs
+  floorPlanUrl String?
+  videoUrl     String?
+
+  // Features & Amenities
+  features     String[]       // e.g. ["Swimming Pool", "BQ", "CCTV", "Solar"]
+
+  // Relations
+  estateId     String         @db.ObjectId
+  estate       Estate         @relation(fields: [estateId], references: [id])
+
+  featured     Boolean        @default(false)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@index([estateId])
+  @@index([type])
+  @@index([status])
+  @@index([priceValue])
+  @@index([areaSqm])
+}
+
+model Inquiry {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullName    String
+  email       String
+  phone       String
+  message     String?
+  propertyId  String?  @db.ObjectId
+  estateName  String?
+  source      String?  // e.g. "website", "referral"
+  resolved    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
