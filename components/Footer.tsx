@@ -114,14 +114,17 @@ export default function Footer() {
               <li className="flex gap-3">
                 <MapPin className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                 <span className="text-white/70 text-sm">
-                  Head Office, Abuja, FCT, Nigeria
+                Abuja Head Office: SUITE SF 4, Hatlab Place, Plot 1952, Sokode Crescent, Zone 5, Wuse, Abuja, Nigeria.
+                </span>
+                <span className="text-white/70 text-sm">
+                Kaduna Head Office: SUITE 7, Fatima Mall, Opp Shafa Filling Station, Umaru Musa Yar'adua Way, Millenium City, Kaduna, Nigeria.
                 </span>
               </li>
               <li className="flex gap-3">
                 <Phone className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                 <div className="text-white/70 text-sm">
-                  <p>+234 800 000 0000</p>
-                  <p>+234 800 000 0001</p>
+                  <p>+234 7039976939</p>
+                  <p>+234 8021218843</p>
                 </div>
               </li>
               <li className="flex gap-3">
