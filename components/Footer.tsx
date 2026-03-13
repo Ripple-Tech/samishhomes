@@ -88,7 +88,7 @@ export default function Footer() {
           {/* Our Estates */}
           <div>
             <h4 className="text-gold font-semibold text-sm tracking-wider uppercase mb-6">
-              Our Estates
+              Our Sites
             </h4>
             <ul className="space-y-3">
               {estates.map((estate) => (
@@ -117,7 +117,7 @@ export default function Footer() {
                 Abuja Head Office: SUITE SF 4, Hatlab Place, Plot 1952, Sokode Crescent, Zone 5, Wuse, Abuja, Nigeria.
                 </span>
                 <span className="text-white/70 text-sm">
-                Kaduna Head Office: SUITE 7, Fatima Mall, Opp Shafa Filling Station, Umaru Musa Yar'adua Way, Millenium City, Kaduna, Nigeria.
+                Kaduna Office: SUITE 7, Fatima Mall, Opp Shafa Filling Station, Umaru Musa Yar'adua Way, Millenium City, Kaduna, Nigeria.
                 </span>
               </li>
               <li className="flex gap-3">
@@ -130,8 +130,9 @@ export default function Footer() {
               <li className="flex gap-3">
                 <Mail className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                 <div className="text-white/70 text-sm">
-                  <p>info@samishhomes.com</p>
-                  <p>clientsupport@samishhomes.com</p>
+                  
+                  <p>support@samish.ng</p>
+                   <p>admin@samish.ng</p>
                 </div>
               </li>
               <li className="flex gap-3">

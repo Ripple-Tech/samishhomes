@@ -4,7 +4,7 @@ const advantages = [
   {
     icon: Award,
     title: "Award-Winning Developer",
-    description: "Recognized for excellence in real estate development across Abuja with multiple industry awards.",
+    description: "The most reliable Real Estate services company of the year 2023.",
   },
   {
     icon: CreditCard,
