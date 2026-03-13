@@ -23,7 +23,7 @@ const heroData = [
     heading: "WE UNLOCK YOUR",
     headingAccent: "DREAM HOME...",
     subText:
-      "We deliver your Dream home, Residential properties across Abuja's finest locations. From terrace duplexes to luxury mansions, Samish Homes and Apartments deliver the desired keys.",
+      "Your trusted partner providing luxury and affordable housing opportunities in a fast growing and changing environment, regardless of class or status.",
     img: "/bana2.png",
   },
   {

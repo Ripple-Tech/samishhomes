@@ -24,16 +24,17 @@ export default function AboutSection() {
               <span className="text-gold">Creating Legacies</span>
             </h2>
             <p className="text-navy/70 mt-6 leading-relaxed">
-              Samish Homes and Apartments is Abuja's premier real estate company, dedicated to
-              providing exceptional residential properties that combine luxury, comfort, and
-              lasting value. With over 8 prime estates across the FCT, we offer a diverse
-              portfolio of properties to suit every lifestyle and budget.
+              Samish Homes and Apartments is Abuja premier Real Estate company,
+               dedicated to providing exceptional residential properties that combine luxury,
+                comfort, and lasting value. With over 8 prime estates across the FCT, helping 
+                people across different economic classes to fulfil their dreams of owning Properties 
+                by deploying professionalism with a global standard on the client’s support system 
             </p>
+            
             <p className="text-navy/70 mt-4 leading-relaxed">
-              From the prestigious hills of Guzape to the vibrant communities of Lugbe, our
-              developments are strategically located to give you the best of Abuja living. Each
-              property is built to the highest standards with quality materials and thoughtful
-              design.
+             From the prestigious hills of Guzape to the vibrant communities of Airport Road and serene, upscale, and hilly residential district of Katampe and Karsana – Gwarimpa.
+              Our properties are strategically located to give you the best of Abuja living. 
+             Each property is designed with the concept of you in mind with quality materials and thoughtful design.
             </p>
 
             {/* Features Grid */}
