@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Header from "@/components/Header";
 import InstallPrompt from "@/components/InstallPrompt";
 import ClientBody from "./ClientBody";
+import LeadCaptureModal from "@/components/lead-capture-modal";
 
 // Modern Sans-serif for UI
 const geistSans = Geist({
@@ -98,6 +99,7 @@ export default function RootLayout({
         <body suppressHydrationWarning className="antialiased">
         <ClientBody>
           {children}
+           <LeadCaptureModal />
            <InstallPrompt />
         </ClientBody>
       </body>
