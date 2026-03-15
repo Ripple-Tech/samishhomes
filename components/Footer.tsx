@@ -7,8 +7,8 @@ const quickLinks = [
   { href: "/site-locations", label: "Site Locations" },
   { href: "/properties", label: "Properties" },
   { href: "/team", label: "Our Team" },
-  { href: "/about", label: "About Us" },
-  { href: "/contact", label: "Contact Us" },
+  { href: "/about-us", label: "About Us" },
+  { href: "/contact-us", label: "Contact Us" },
 ];
 
 const estates = [
