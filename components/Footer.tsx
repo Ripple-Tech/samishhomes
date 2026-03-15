@@ -13,13 +13,12 @@ const quickLinks = [
 
 const estates = [
   "Hillcity Residence",
-  "Crete Sterling Heights",
-  "Samish Homesphere Karsana",
   "Sterling Heights Ridge City",
+  "Samish Onyx Homes",
+  "Hill View Residence",
+  "Samish Homesphere Karsana", 
   "Stardom City Estate",
   "Starlight Estate Lugbe",
-  "Sunshine Estate Lugbe",
-  "Prestige Resident Aviation City",
 ];
 
 export default function Footer() {

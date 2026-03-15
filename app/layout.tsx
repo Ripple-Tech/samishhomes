@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     title: "Samish Homes and Apartments",
     description:
       "Premium residential properties across Abuja — Hillcity Residence, Guzape, Karsana and more. Quality construction, secure communities, flexible payment plans.",
-    url: "https://samishhomes.vercel.app",
+    url: "https://samish.ng",
     siteName: "Samish Homes and Apartments",
     images: [
       {

@@ -10,12 +10,12 @@ const estates = [
     description: "A prestigious hilltop community offering panoramic views and serene living. Hillcity Residence is de...",
     image: "https://ext.same-assets.com/2617002787/3040807372.jpeg",
   },
-  {
-    id: "crete-sterling-heights-guzape",
-    name: "Crete Sterling Heights Guzape",
-    plots: 62,
-    description: "Located in the heart of Guzape, one of Abuja's most sought-after districts. Crete Sterling Heights E...",
-    image: "https://ext.same-assets.com/2617002787/1999643008.jpeg",
+   {
+    id: "sterling-heights-ridge-city-guzape",
+    name: "Sterling Heights Ridge City Guzape",
+    plots: 55,
+    description: "Ridge City at Sterling Heights Estate in Guzape offers elevated living with stunning ridge views. Th...",
+    image: "https://ext.same-assets.com/2617002787/271828455.jpeg",
   },
   {
     id: "samish-homesphere-karsana",
@@ -25,12 +25,13 @@ const estates = [
     image: "https://ext.same-assets.com/2617002787/2880169640.jpeg",
   },
   {
-    id: "sterling-heights-ridge-city-guzape",
-    name: "Sterling Heights Ridge City Guzape",
-    plots: 55,
-    description: "Ridge City at Sterling Heights Estate in Guzape offers elevated living with stunning ridge views. Th...",
-    image: "https://ext.same-assets.com/2617002787/271828455.jpeg",
+    id: "crete-sterling-heights-guzape",
+    name: "Crete Sterling Heights Guzape",
+    plots: 62,
+    description: "Located in the heart of Guzape, one of Abuja's most sought-after districts. Crete Sterling Heights E...",
+    image: "https://ext.same-assets.com/2617002787/1999643008.jpeg",
   },
+ 
 ];
 
 export default function EstatesSection() {
