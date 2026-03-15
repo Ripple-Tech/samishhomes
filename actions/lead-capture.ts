@@ -2,6 +2,7 @@
 
 import { db } from "@/lib/db";
 import { LeadCaptureSchema } from "@/schemas";
+import { sendLeadNotificationEmail } from "@/lib/mail";
 import * as z from "zod";
 
 export async function submitLeadCapture(
@@ -13,17 +14,27 @@ export async function submitLeadCapture(
   }
 
   const { phone, whatsapp, email } = validated.data;
+  const submittedAt = new Date();
 
   try {
-    await db.inquiry.create({
-      data: {
-        fullName: "Website Visitor",
+    // Save to DB and send notification email in parallel
+    await Promise.all([
+      db.inquiry.create({
+        data: {
+          fullName: "Website Visitor",
+          email,
+          phone,
+          message: whatsapp ? `WhatsApp: ${whatsapp}` : undefined,
+          source: "website_lead_capture",
+        },
+      }),
+      sendLeadNotificationEmail({
         email,
         phone,
-        message: whatsapp ? `WhatsApp: ${whatsapp}` : undefined,
-        source: "website_lead_capture",
-      },
-    });
+        whatsapp: whatsapp || undefined,
+        submittedAt,
+      }),
+    ]);
 
     return { success: "Thank you! We'll be in touch shortly." };
   } catch (error) {
