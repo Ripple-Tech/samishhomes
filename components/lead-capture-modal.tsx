@@ -29,6 +29,12 @@ type LeadCaptureValues = z.infer<typeof LeadCaptureSchema>;
 
 const STORAGE_KEY = "leadCaptureSubmitted";
 const DELAY_MS = 2500; // Show after 2.5s
+const greeting = (() => {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good morning! 👋";
+  if (hour < 17) return "Good afternoon! 👋";
+  return "Good evening! 👋";
+})();
 
 export default function LeadCaptureModal() {
   const [show, setShow] = useState(false);
@@ -186,7 +192,7 @@ export default function LeadCaptureModal() {
             className="text-sm relative z-10 leading-relaxed"
             style={{ color: "rgba(255,255,255,0.7)", fontFamily: "Inter, sans-serif" }}
           >
-            Drop your details and our team will reach out with exclusive listings and offers.
+            {greeting} Welcome to Samish Homes! We&apos;re excited to help you find the perfect property. Just drop your contact details below, and we&apos;ll be in touch with the best listings for you. Let&apos;s make your dream home a reality!
           </p>
         </div>
 
@@ -363,7 +369,7 @@ export default function LeadCaptureModal() {
                         Sending…
                       </span>
                     ) : (
-                      "Get Property Updates"
+                      "Submit"
                     )}
                   </Button>
                   {/* <button
