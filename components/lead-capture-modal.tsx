@@ -366,7 +366,7 @@ export default function LeadCaptureModal() {
                       "Get Property Updates"
                     )}
                   </Button>
-                  <button
+                  {/* <button
                     type="button"
                     onClick={handleClose}
                     disabled={isPending}
@@ -380,7 +380,7 @@ export default function LeadCaptureModal() {
                     }}
                   >
                     Skip
-                  </button>
+                  </button> */}
                 </div>
 
                 <p
