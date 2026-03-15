@@ -192,7 +192,7 @@ export default function LeadCaptureModal() {
             className="text-sm relative z-10 leading-relaxed"
             style={{ color: "rgba(255,255,255,0.7)", fontFamily: "Inter, sans-serif" }}
           >
-            {greeting} Welcome to Samish Homes! We&apos;re excited to help you find the perfect property. Just drop your contact details below, and we&apos;ll be in touch with the best listings for you. Let&apos;s make your dream home a reality!
+            {greeting} Welcome to Samish Homes! We&apos;re excited to help you find the perfect property. 
           </p>
         </div>
 

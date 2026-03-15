@@ -10,8 +10,8 @@ const navLinks = [
   { href: "/site-locations", label: "Site Locations" },
   { href: "/properties", label: "Properties" },
   { href: "/teams", label: "Team" },
-  { href: "/about", label: "About Us" },
-  { href: "/contact", label: "Contact Us" },
+  { href: "/about-us", label: "About Us" },
+  { href: "/contact-us", label: "Contact Us" },
 ];
 
 export default function Header() {
