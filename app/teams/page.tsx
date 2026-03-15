@@ -105,7 +105,7 @@ export default function TeamPage() {
                       src={member.image}
                       alt={member.name}
                       fill
-                      className="object-cover"
+                      className="object-contain"
                     />
                   </div>
                   <div className="p-5">
