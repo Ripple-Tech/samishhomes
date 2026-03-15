@@ -46,6 +46,8 @@ export interface LeadNotificationData {
 export async function sendLeadNotificationEmail(lead: LeadNotificationData) {
   const ADMIN_EMAILS = [
     "support@samish.com",
+    process.env.SMTP_EMAIL!,
+    
     // add more admin emails here if needed
   ];
 
