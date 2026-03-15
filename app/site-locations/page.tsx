@@ -308,7 +308,7 @@ export default function SiteLocationsPage() {
                               View All <ArrowRight size={14} />
                             </Link>
                             <Link
-                              href="/contact"
+                              href="/contact-us"
                               className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl font-semibold text-navy text-sm border-2 border-navy hover:bg-navy hover:text-white transition-colors"
                             >
                               <Home size={14} /> Enquire
@@ -507,7 +507,7 @@ export default function SiteLocationsPage() {
                           View All Units <ArrowRight size={16} />
                         </Link>
                         <Link
-                          href="/contact"
+                          href="/contact-us"
                           className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-navy border-2 border-navy hover:bg-navy hover:text-white transition-colors"
                         >
                           <Home size={16} /> Enquire Now
@@ -626,7 +626,7 @@ export default function SiteLocationsPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  href="/contact"
+                  href="/contact-us"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold text-navy font-semibold rounded-full hover:bg-gold-300 transition-colors"
                 >
                   Talk to Our Team

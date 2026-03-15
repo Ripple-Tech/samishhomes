@@ -49,7 +49,7 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden lg:block">
             <Link
-              href="/contact"
+              href="/contact-us"
               className="inline-flex items-center justify-center px-6 py-2.5 bg-white text-navy font-semibold text-sm rounded-full hover:bg-gold hover:text-navy transition-all"
             >
               Get Started
@@ -82,7 +82,7 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="/contact"
+              href="/contact-us"
               className="mt-4 inline-flex items-center justify-center px-6 py-2.5 bg-white text-navy font-semibold text-sm rounded-full"
               onClick={() => setMobileMenuOpen(false)}
             >

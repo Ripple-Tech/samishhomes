@@ -181,7 +181,7 @@ export default function PropertiesPage() {
               Contact our sales team for pricing, availability, and payment plans.
             </p>
             <Link
-              href="/contact"
+              href="/contact-us"
               className="inline-flex items-center justify-center px-8 py-4 bg-gold text-navy font-semibold rounded-full hover:bg-gold-300 transition-colors"
             >
               Contact Sales Team

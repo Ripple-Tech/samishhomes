@@ -87,7 +87,7 @@ export default function PropertyCard({ property, variant = "default" }: Property
             N{property.price}
           </span>
           <Link
-            href="/contact"
+            href="/contact-us"
             className="text-navy font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all"
           >
             Enquire <span className="text-lg">→</span>

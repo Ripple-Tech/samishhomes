@@ -51,7 +51,7 @@ export default function AboutSection() {
             </div>
 
             <Link
-              href="/about"
+              href="/about-us"
               className="inline-flex items-center justify-center px-8 py-3.5 bg-gold text-navy font-semibold rounded-full hover:bg-gold-300 transition-colors mt-8"
             >
               Learn More About Us
