@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, BedDouble, Bath, Maximize2, ArrowRight, ChevronRight, Building2, Home } from "lucide-react";
@@ -151,7 +151,7 @@ export default function SiteLocationsPage() {
           </div>
         </section>
 
-        {/* ── Main Content: sidebar list + detail panel ── */}
+        {/* ── Main Content ── */}
         <section className="py-14 bg-navy-50 min-h-[600px]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -171,9 +171,161 @@ export default function SiteLocationsPage() {
               </h2>
             </motion.div>
 
-            <div className="flex flex-col lg:flex-row gap-8">
+            {/* ── MOBILE: accordion (hidden on lg+) ── */}
+            <div className="lg:hidden space-y-3">
+              {siteLocations.map((loc, i) => {
+                const isOpen = activeId === loc.id;
+                return (
+                  <motion.div
+                    key={loc.id}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.06 }}
+                    className={`rounded-xl overflow-hidden border transition-all ${
+                      isOpen ? "border-navy shadow-md" : "border-gray-200 bg-white"
+                    }`}
+                  >
+                    {/* Accordion header */}
+                    <button
+                      type="button"
+                      disabled={loc.comingSoon}
+                      onClick={() => !loc.comingSoon && setActiveId(isOpen ? null : loc.id)}
+                      className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors ${
+                        isOpen
+                          ? "bg-navy text-white"
+                          : loc.comingSoon
+                          ? "bg-white text-navy/40 cursor-not-allowed"
+                          : "bg-white text-navy"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors ${
+                            isOpen ? "bg-gold" : loc.comingSoon ? "bg-gray-100" : "bg-navy-50"
+                          }`}
+                        >
+                          <Building2
+                            size={16}
+                            className={isOpen ? "text-navy" : loc.comingSoon ? "text-navy/30" : "text-navy"}
+                          />
+                        </div>
+                        <div>
+                          <p className={`font-semibold text-sm leading-snug ${isOpen ? "text-white" : loc.comingSoon ? "text-navy/40" : "text-navy"}`}>
+                            {loc.displayName}
+                          </p>
+                          {loc.comingSoon ? (
+                            <span className="text-xs text-gold/70 font-medium">Coming Soon</span>
+                          ) : (
+                            <p className={`text-xs mt-0.5 ${isOpen ? "text-white/60" : "text-navy/50"}`}>
+                              {loc.properties.length} unit{loc.properties.length !== 1 ? "s" : ""}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      {!loc.comingSoon && (
+                        <ChevronRight
+                          size={16}
+                          className={`flex-shrink-0 transition-transform duration-300 ${isOpen ? "rotate-90 text-gold" : "text-navy/30"}`}
+                        />
+                      )}
+                    </button>
 
-              {/* ── Left: Estate List ── */}
+                    {/* Accordion body — units inline */}
+                    <AnimatePresence initial={false}>
+                      {isOpen && !loc.comingSoon && (
+                        <motion.div
+                          key="mobile-units"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden bg-white"
+                        >
+                          {/* Cover strip */}
+                          {loc.coverImage && (
+                            <div className="relative h-40 w-full">
+                              <Image src={loc.coverImage} alt={loc.displayName} fill className="object-cover" />
+                              <div className="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent" />
+                              <div className="absolute bottom-3 left-4 flex items-center gap-1.5 text-white/80 text-xs">
+                                <MapPin size={11} className="text-gold" />
+                                <span>{loc.location}</span>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Mini stats */}
+                          <div className="grid grid-cols-3 gap-2 px-4 py-4 border-b border-gray-100">
+                            {[
+                              { label: "Units", value: loc.properties.length.toString() },
+                              { label: "From", value: loc.properties.length > 0 ? `₦${loc.properties[0].price}` : "—" },
+                              { label: "Types", value: [...new Set(loc.properties.map((p) => p.type))].length.toString() },
+                            ].map((s) => (
+                              <div key={s.label} className="text-center bg-navy-50 rounded-lg py-2 px-1">
+                                <p className="font-display font-bold text-navy text-sm">{s.value}</p>
+                                <p className="text-navy/50 text-xs">{s.label}</p>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Unit rows */}
+                          <div className="px-4 py-3 space-y-3">
+                            <h4 className="font-display font-bold text-navy text-sm">Available Units</h4>
+                            {loc.properties.map((prop, pi) => (
+                              <motion.div
+                                key={prop.id}
+                                initial={{ opacity: 0, y: 6 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: pi * 0.05 }}
+                                className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:border-gold transition-all"
+                              >
+                                <div className="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
+                                  <Image src={prop.image} alt={prop.title} fill className="object-cover" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <p className="font-semibold text-navy text-xs leading-snug truncate">{prop.title}</p>
+                                  <div className="flex items-center gap-2 mt-1 text-navy/50 text-xs flex-wrap">
+                                    <span className="flex items-center gap-0.5"><BedDouble size={10} />{prop.beds}</span>
+                                    <span className="flex items-center gap-0.5"><Bath size={10} />{prop.baths}</span>
+                                    <span className="flex items-center gap-0.5"><Maximize2 size={10} />{prop.size}</span>
+                                  </div>
+                                </div>
+                                <div className="text-right flex-shrink-0">
+                                  <p className="font-display font-bold text-navy text-sm">₦{prop.price}</p>
+                                  <span className="inline-block px-1.5 py-0.5 bg-green-50 text-green-700 text-xs rounded-full">Available</span>
+                                </div>
+                              </motion.div>
+                            ))}
+                          </div>
+
+                          {/* CTA buttons */}
+                          <div className="flex gap-3 px-4 pb-4">
+                            <Link
+                              href={`/properties?location=${loc.id}`}
+                              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl font-semibold text-navy text-sm transition-all"
+                              style={{ backgroundColor: "#eabe20" }}
+                            >
+                              View All <ArrowRight size={14} />
+                            </Link>
+                            <Link
+                              href="/contact"
+                              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl font-semibold text-navy text-sm border-2 border-navy hover:bg-navy hover:text-white transition-colors"
+                            >
+                              <Home size={14} /> Enquire
+                            </Link>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* ── DESKTOP: sidebar + detail panel (hidden below lg) ── */}
+            <div className="hidden lg:flex gap-8">
+
+              {/* Left: Estate List */}
               <div className="lg:w-80 flex-shrink-0 space-y-2">
                 {siteLocations.map((loc, i) => (
                   <motion.button
@@ -196,11 +348,7 @@ export default function SiteLocationsPage() {
                     <div className="flex items-center gap-3">
                       <div
                         className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors ${
-                          activeId === loc.id
-                            ? "bg-gold"
-                            : loc.comingSoon
-                            ? "bg-gray-100"
-                            : "bg-navy-50"
+                          activeId === loc.id ? "bg-gold" : loc.comingSoon ? "bg-gray-100" : "bg-navy-50"
                         }`}
                       >
                         <Building2
@@ -231,10 +379,9 @@ export default function SiteLocationsPage() {
                 ))}
               </div>
 
-              {/* ── Right: Detail Panel ── */}
+              {/* Right: Detail Panel */}
               <div className="flex-1 min-h-[500px]">
                 {!activeLocation ? (
-                  /* Empty state */
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -247,8 +394,6 @@ export default function SiteLocationsPage() {
                     <p className="text-navy/50 text-sm max-w-xs">
                       Choose an estate from the list to view its location details, available units, and pricing.
                     </p>
-
-                    {/* Show all estates as cards when nothing selected */}
                     <div className="grid sm:grid-cols-2 gap-4 mt-10 w-full max-w-2xl">
                       {siteLocations.filter((l) => !l.comingSoon).slice(0, 4).map((loc) => (
                         <button
@@ -279,23 +424,15 @@ export default function SiteLocationsPage() {
                     transition={{ duration: 0.35 }}
                     className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm"
                   >
-                    {/* Cover image */}
                     <div className="relative h-56 sm:h-72">
                       {activeLocation.coverImage ? (
-                        <Image
-                          src={activeLocation.coverImage}
-                          alt={activeLocation.displayName}
-                          fill
-                          className="object-cover"
-                        />
+                        <Image src={activeLocation.coverImage} alt={activeLocation.displayName} fill className="object-cover" />
                       ) : (
                         <div className="h-full bg-navy-100 flex items-center justify-center">
                           <Building2 size={48} className="text-navy/20" />
                         </div>
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent" />
-
-                      {/* overlay title */}
                       <div className="absolute bottom-0 left-0 right-0 p-6">
                         <span className="inline-block px-3 py-1 bg-gold text-navy text-xs font-bold uppercase tracking-wider rounded-full mb-2">
                           Active Estate
@@ -310,17 +447,13 @@ export default function SiteLocationsPage() {
                       </div>
                     </div>
 
-                    {/* Body */}
                     <div className="p-6">
-                      {/* Quick stats */}
                       <div className="grid grid-cols-3 gap-4 mb-8">
                         {[
                           { label: "Total Units", value: activeLocation.properties.length.toString() },
                           {
                             label: "Starting From",
-                            value: activeLocation.properties.length > 0
-                              ? `₦${activeLocation.properties[0].price}`
-                              : "—",
+                            value: activeLocation.properties.length > 0 ? `₦${activeLocation.properties[0].price}` : "—",
                           },
                           {
                             label: "Property Types",
@@ -334,7 +467,6 @@ export default function SiteLocationsPage() {
                         ))}
                       </div>
 
-                      {/* Properties list */}
                       <div className="mb-6">
                         <h4 className="font-display font-bold text-navy text-lg mb-4">Available Units</h4>
                         <div className="space-y-3">
@@ -349,7 +481,6 @@ export default function SiteLocationsPage() {
                               <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                                 <Image src={prop.image} alt={prop.title} fill className="object-cover" />
                               </div>
-
                               <div className="flex-1 min-w-0">
                                 <p className="font-semibold text-navy text-sm truncate">{prop.title}</p>
                                 <div className="flex items-center gap-3 mt-1 text-navy/50 text-xs">
@@ -358,7 +489,6 @@ export default function SiteLocationsPage() {
                                   <span className="flex items-center gap-1"><Maximize2 size={11} />{prop.size}</span>
                                 </div>
                               </div>
-
                               <div className="text-right flex-shrink-0">
                                 <p className="font-display font-bold text-navy text-base">₦{prop.price}</p>
                                 <span className="inline-block px-2 py-0.5 bg-green-50 text-green-700 text-xs font-medium rounded-full mt-1">Available</span>
@@ -368,22 +498,19 @@ export default function SiteLocationsPage() {
                         </div>
                       </div>
 
-                      {/* CTA */}
                       <div className="flex flex-col sm:flex-row gap-3">
                         <Link
                           href={`/properties?location=${activeLocation.id}`}
                           className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-navy transition-all hover:shadow-md active:scale-[0.98]"
                           style={{ backgroundColor: "#eabe20" }}
                         >
-                          View All Units
-                          <ArrowRight size={16} />
+                          View All Units <ArrowRight size={16} />
                         </Link>
                         <Link
                           href="/contact"
                           className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-navy border-2 border-navy hover:bg-navy hover:text-white transition-colors"
                         >
-                          <Home size={16} />
-                          Enquire Now
+                          <Home size={16} /> Enquire Now
                         </Link>
                       </div>
                     </div>
@@ -391,6 +518,7 @@ export default function SiteLocationsPage() {
                 )}
               </div>
             </div>
+
           </div>
         </section>
 

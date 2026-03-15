@@ -114,13 +114,13 @@ export default function TeamPage() {
                     <p className="text-navy/60 text-sm leading-relaxed mb-4 line-clamp-3">
                       {member.description}
                     </p>
-                    <a
+                    {/* <a
                       href={`mailto:${member.email}`}
                       className="flex items-center gap-2 text-navy/70 text-sm hover:text-navy transition-colors"
                     >
                       <Mail size={14} />
                       <span>{member.email}</span>
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               ))}
