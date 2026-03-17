@@ -110,7 +110,7 @@ export default function TeamPage() {
                       className="object-contain"
                     />
                   </div>
-                  <div className="p-5">
+                  <div className="p-5 flex flex-col items-center text-center">
                     <h3 className="font-display font-bold text-navy text-lg">{member.name}</h3>
                     <p className="text-gold font-medium text-sm mb-3">{member.title}</p>
                     <p className="text-navy/60 text-sm leading-relaxed mb-4 line-clamp-3">
