@@ -83,8 +83,8 @@ export default function TeamPage() {
         </section>
 
         {/* Team Members Section */}
-        <section className="py-20 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 bg-gray-50 ">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <div className="text-center mb-16">
               <span className="text-gold font-semibold text-sm tracking-widest uppercase">
                 OUR PROFESSIONALS
@@ -94,11 +94,13 @@ export default function TeamPage() {
               </h2>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+           
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 p-2 items-center justify-center ">
+             
               {teamMembers.map((member) => (
                 <div
                   key={member.id}
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
+                  className="bg-white rounded-xl overflow-hidden  shadow-sm hover:shadow-lg transition-shadow"
                 >
                   <div className="relative h-64 overflow-hidden">
                     <Image
@@ -124,6 +126,7 @@ export default function TeamPage() {
                   </div>
                 </div>
               ))}
+              
             </div>
           </div>
         </section>
