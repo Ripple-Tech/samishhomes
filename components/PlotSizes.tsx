@@ -62,34 +62,112 @@ export default function PlotSizes() {
         </div>
 
         {/* Plot Sizes Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-          {plotSizes.map((plot) => (
-            <div
-              key={plot.size}
-              className={`relative rounded-xl p-6 text-center transition-all hover:scale-105 ${
-                plot.popular
-                  ? "bg-navy text-white shadow-xl"
-                  : "bg-white border border-gray-200 shadow-md"
-              }`}
-            >
-              {plot.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-navy text-xs font-semibold px-3 py-1 rounded-full">
-                  Most Popular
-                </div>
-              )}
-              <Home className={`w-8 h-8 mx-auto mb-4 ${plot.popular ? "text-gold" : "text-navy/40"}`} />
-              <div className={`font-display text-2xl md:text-3xl font-bold mb-2 ${plot.popular ? "text-gold" : "text-navy"}`}>
-                {plot.size}
-              </div>
-              <div className={`font-semibold mb-1 ${plot.popular ? "text-white" : "text-navy"}`}>
-                {plot.type}
-              </div>
-              <div className={`text-sm ${plot.popular ? "text-white/70" : "text-navy/60"}`}>
-                {plot.bedrooms}
-              </div>
-            </div>
-          ))}
+        {/* Plot Sizes Layout */}
+<div className="flex flex-col gap-12">
+  
+  {/* Top row - 5 items */}
+  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+    {plotSizes.slice(0, 5).map((plot) => (
+      <div
+        key={plot.size}
+        className={`relative rounded-xl p-6 text-center transition-all hover:scale-105 ${
+          plot.popular
+            ? "bg-navy text-white shadow-xl"
+            : "bg-white border border-gray-200 shadow-md"
+        }`}
+      >
+        {plot.popular && (
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-navy text-xs font-semibold px-3 py-1 rounded-full">
+            Most Popular
+          </div>
+        )}
+
+        <Home
+          className={`w-8 h-8 mx-auto mb-4 ${
+            plot.popular ? "text-gold" : "text-navy/40"
+          }`}
+        />
+
+        <div
+          className={`font-display text-2xl md:text-3xl font-bold mb-2 ${
+            plot.popular ? "text-gold" : "text-navy"
+          }`}
+        >
+          {plot.size}
         </div>
+
+        <div
+          className={`font-semibold mb-1 ${
+            plot.popular ? "text-white" : "text-navy"
+          }`}
+        >
+          {plot.type}
+        </div>
+
+        <div
+          className={`text-sm ${
+            plot.popular ? "text-white/70" : "text-navy/60"
+          }`}
+        >
+          {plot.bedrooms}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Bottom row - 2 items centered */}
+  <div className="flex justify-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-xl">
+      {plotSizes.slice(5, 7).map((plot) => (
+        <div
+          key={plot.size}
+          className={`relative rounded-xl p-6 text-center transition-all hover:scale-105 ${
+            plot.popular
+              ? "bg-navy text-white shadow-xl"
+              : "bg-white border border-gray-200 shadow-md"
+          }`}
+        >
+          {plot.popular && (
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-navy text-xs font-semibold px-3 py-1 rounded-full">
+              Most Popular
+            </div>
+          )}
+
+          <Home
+            className={`w-8 h-8 mx-auto mb-4 ${
+              plot.popular ? "text-gold" : "text-navy/40"
+            }`}
+          />
+
+          <div
+            className={`font-display text-2xl md:text-3xl font-bold mb-2 ${
+              plot.popular ? "text-gold" : "text-navy"
+            }`}
+          >
+            {plot.size}
+          </div>
+
+          <div
+            className={`font-semibold mb-1 ${
+              plot.popular ? "text-white" : "text-navy"
+            }`}
+          >
+            {plot.type}
+          </div>
+
+          <div
+            className={`text-sm ${
+              plot.popular ? "text-white/70" : "text-navy/60"
+            }`}
+          >
+            {plot.bedrooms}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+</div>
       </div>
     </section>
   );

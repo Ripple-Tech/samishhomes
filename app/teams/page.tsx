@@ -132,7 +132,7 @@ export default function TeamPage() {
         </section>
 
         {/* Join Our Team Section */}
-        <section className="py-20 bg-navy">
+        {/* <section className="py-20 bg-navy">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
               Join Our <span className="text-gold">Growing Team</span>
@@ -144,7 +144,7 @@ export default function TeamPage() {
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12">
-              {/* Competitive Pay */}
+            
               <div className="bg-navy-800 border border-white/10 rounded-xl p-6">
                 <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-4">
                   <DollarSign className="w-6 h-6 text-gold" />
@@ -155,7 +155,7 @@ export default function TeamPage() {
                 </p>
               </div>
 
-              {/* Career Growth */}
+              
               <div className="bg-navy-800 border border-white/10 rounded-xl p-6">
                 <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-4">
                   <TrendingUp className="w-6 h-6 text-gold" />
@@ -166,7 +166,7 @@ export default function TeamPage() {
                 </p>
               </div>
 
-              {/* Great Culture */}
+              
               <div className="bg-navy-800 border border-white/10 rounded-xl p-6">
                 <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-4">
                   <Heart className="w-6 h-6 text-gold" />
@@ -185,7 +185,7 @@ export default function TeamPage() {
               Send Your Application
             </Link>
           </div>
-        </section>
+        </section> */}
       </main>
       <Footer />
     </>
