@@ -20,9 +20,21 @@ const plotSizes = [
     popular: true,
   },
   {
+    size: "400 SQM",
+    type: "Spacious Detached Duplex",
+    bedrooms: "4–5 Bedrooms",
+    popular: false,
+  },
+  {
     size: "500 SQM",
     type: "Luxury Villa",
     bedrooms: "5 Bedrooms",
+    popular: false,
+  },
+  {
+    size: "800 SQM",
+    type: "Mini Mansion",
+    bedrooms: "5–6 Bedrooms",
     popular: false,
   },
   {
@@ -32,7 +44,6 @@ const plotSizes = [
     popular: false,
   },
 ];
-
 export default function PlotSizes() {
   return (
     <section className="py-20 lg:py-32 bg-gray-50">
