@@ -45,7 +45,7 @@ const siteLocations = [
       location: estate.location,
       properties: estate.properties,
       comingSoon: false,
-      coverImage: estate.coverImage ?? estate.properties[0]?.image ?? null,
+      coverImage: estate.coverImage  ?? null,
     };
   }),
   ...extraEstates.map((estate) => ({

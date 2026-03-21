@@ -72,7 +72,7 @@ export const estates: Estate[] = [
   {
     id: "crete-sterling-heights-guzape",
     name: "CRETE STERLING HEIGHTS ESTATE GUZAPE MAIN",
-    coverImage: "/crete.jpeg",
+    coverImage: "/estate1.jpg",
     shortName: "CRETE STERLING HEIGHTS",
     location: "Guzape Main, Abuja, FCT",
     properties: generateProperties("Crete Sterling Heights Guzape", "CRETE STERLING HEIGHTS ESTATE GUZAP...", {
