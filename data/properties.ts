@@ -2,6 +2,7 @@ import type { Property } from "@/components/PropertyCard";
 
 export interface Estate {
   id: string;
+  coverImage: string;
   name: string;
   shortName: string;
   location: string;
@@ -58,6 +59,7 @@ export const estates: Estate[] = [
     id: "hillcity-residence",
     name: "HILLCITY RESIDENCE",
     shortName: "HILLCITY RESIDENCE",
+    coverImage: "/hillcity.jpeg",
     location: "Hillcity Residence, Abuja, FCT",
     properties: generateProperties("Hillcity Residence", "HILLCITY RESIDENCE", {
       "250 SQM": "45M",
@@ -70,6 +72,7 @@ export const estates: Estate[] = [
   {
     id: "crete-sterling-heights-guzape",
     name: "CRETE STERLING HEIGHTS ESTATE GUZAPE MAIN",
+    coverImage: "/crete.jpeg",
     shortName: "CRETE STERLING HEIGHTS",
     location: "Guzape Main, Abuja, FCT",
     properties: generateProperties("Crete Sterling Heights Guzape", "CRETE STERLING HEIGHTS ESTATE GUZAP...", {
@@ -84,6 +87,7 @@ export const estates: Estate[] = [
     id: "samish-homesphere-karsana",
     name: "SAMISH HOMESPHERE KARSANA",
     shortName: "SAMISH HOMESPHERE KARSANA",
+    coverImage: "/samish.jpeg",
     location: "Karsana, Abuja, FCT",
     properties: generateProperties("Samish Homesphere Karsana", "SAMISH HOMESPHERE KARSANA", {
       "250 SQM": "55M",
@@ -93,10 +97,43 @@ export const estates: Estate[] = [
       "1000 SQM": "220M",
     }),
   },
+
+  // ✅ NEW
+  {
+    id: "samish-onyx-homes",
+    name: "SAMISH ONYX HOMES",
+    shortName: "SAMISH ONYX HOMES",
+    coverImage: "/samish2.jpeg",
+    location: "Abuja, FCT",
+    properties: generateProperties("Samish Onyx Homes", "SAMISH ONYX HOMES", {
+      "250 SQM": "60M",
+      "300 SQM": "72M",
+      "350 SQM": "84M",
+      "500 SQM": "120M",
+      "1000 SQM": "240M",
+    }),
+  },
+
+  {
+    id: "hill-view-residence",
+    name: "HILL VIEW RESIDENCE",
+    shortName: "HILL VIEW RESIDENCE",
+    coverImage: "/hillview.jpg",
+    location: "Abuja, FCT",
+    properties: generateProperties("Hill View Residence", "HILL VIEW RESIDENCE", {
+      "250 SQM": "50M",
+      "300 SQM": "60M",
+      "350 SQM": "70M",
+      "500 SQM": "100M",
+      "1000 SQM": "200M",
+    }),
+  },
+
   {
     id: "sterling-heights-ridge-city-guzape",
     name: "STERLING HEIGHTS ESTATE (RIDGE CITY) GUZAPE",
     shortName: "STERLING HEIGHTS RIDGE CITY",
+      coverImage: "/bana1.png",
     location: "Ridge City, Guzape, Abuja, FCT",
     properties: generateProperties("Sterling Heights Ridge City Guzape", "STERLING HEIGHTS ESTATE (RIDGE CITY...", {
       "250 SQM": "70M",
@@ -110,6 +147,7 @@ export const estates: Estate[] = [
     id: "stardom-city-kurudu-jikwoyi",
     name: "STARDOM CITY ESTATE KURUDU JIKWOYI KARSHI ROAD",
     shortName: "STARDOM CITY ESTATE",
+    coverImage: "/bana2.png",
     location: "Kurudu Jikwoyi, Karshi Road, Abuja, FCT",
     properties: generateProperties("Stardom City Estate Kurudu", "STARDOM CITY ESTATE KURUDU JIKWOYI ...", {
       "250 SQM": "35M",
@@ -123,6 +161,7 @@ export const estates: Estate[] = [
     id: "starlight-estate-lugbe",
     name: "STARLIGHT ESTATE LUGBE AIRPORT ROAD",
     shortName: "STARLIGHT ESTATE LUGBE",
+    coverImage: "/bana3.png",
     location: "Lugbe, Airport Road, Abuja, FCT",
     properties: generateProperties("Starlight Estate Lugbe", "STARLIGHT ESTATE LUGBE AIRPORT ROAD", {
       "250 SQM": "40M",
@@ -136,6 +175,7 @@ export const estates: Estate[] = [
     id: "sunshine-estate-lugbe",
     name: "SUNSHINE ESTATE IN LUGBE, AIRPORT ROAD",
     shortName: "SUNSHINE ESTATE LUGBE",
+    coverImage: "/bana4.png",
     location: "Lugbe, Airport Road, Abuja, FCT",
     properties: generateProperties("Sunshine Estate Lugbe", "SUNSHINE ESTATE IN LUGBE, AIRPORT R...", {
       "250 SQM": "38M",
@@ -149,6 +189,7 @@ export const estates: Estate[] = [
     id: "prestige-resident-aviation-city",
     name: "PRESTIGE RESIDENT AVIATION CITY",
     shortName: "PRESTIGE RESIDENT",
+    coverImage: "/bana5.png",
     location: "Aviation City, Abuja, FCT",
     properties: generateProperties("Prestige Resident Aviation City", "PRESTIGE RESIDENT AVIATION CITY", {
       "250 SQM": "65M",

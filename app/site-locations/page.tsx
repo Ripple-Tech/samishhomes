@@ -14,8 +14,8 @@ import { estates } from "@/data/properties";
 const ESTATE_ORDER = [
   { displayName: "Hillcity Residence",          id: "hillcity-residence" },
   { displayName: "Sterling Heights Ridge City", id: "sterling-heights-ridge-city-guzape" },
-  { displayName: "Samish Onyx Homes",           id: null }, // coming soon
-  { displayName: "Hill View Residence",         id: null }, // coming soon
+  { displayName: "Samish Onyx Homes",           id: "samish-onyx-homes" }, 
+  { displayName: "Hill View Residence",         id: "hill-view-residence" }, 
   { displayName: "Samish Homesphere Karsana",   id: "samish-homesphere-karsana" },
   { displayName: "Stardom City Estate",         id: "stardom-city-kurudu-jikwoyi" },
   { displayName: "Starlight Estate Lugbe",      id: "starlight-estate-lugbe" },
@@ -45,7 +45,7 @@ const siteLocations = [
       location: estate.location,
       properties: estate.properties,
       comingSoon: false,
-      coverImage: estate.properties[0]?.image ?? null,
+      coverImage: estate.coverImage ?? estate.properties[0]?.image ?? null,
     };
   }),
   ...extraEstates.map((estate) => ({
