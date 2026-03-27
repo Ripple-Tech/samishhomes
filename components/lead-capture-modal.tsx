@@ -28,7 +28,9 @@ const LeadCaptureSchema = z.object({
 type LeadCaptureValues = z.infer<typeof LeadCaptureSchema>;
 
 const STORAGE_KEY = "leadCaptureSubmitted";
+const STORAGE_TIMESTAMP_KEY = "leadCaptureTimestamp";
 const DELAY_MS = 2500; // Show after 2.5s
+
 const greeting = (() => {
   const hour = new Date().getHours();
   if (hour < 12) return "Good morning! 👋";
@@ -48,10 +50,26 @@ export default function LeadCaptureModal() {
   });
 
   useEffect(() => {
-    if (sessionStorage.getItem(STORAGE_KEY)) return;
-    const t = setTimeout(() => setShow(true), DELAY_MS);
-    return () => clearTimeout(t);
-  }, []);
+    // Check if user has already seen/submitted the modal in this session
+    const hasSeenModal = sessionStorage.getItem(STORAGE_KEY);
+    
+    if (hasSeenModal) {
+      // User has already seen the modal, don't show it again
+      return;
+    }
+    
+    // Set a timeout to show the modal after delay
+    const timer = setTimeout(() => {
+      // Double-check again before showing (in case something changed during delay)
+      if (!sessionStorage.getItem(STORAGE_KEY)) {
+        setShow(true);
+        // Optionally mark as seen immediately to prevent showing if user navigates quickly
+        // But we'll keep the timeout behavior as is
+      }
+    }, DELAY_MS);
+    
+    return () => clearTimeout(timer);
+  }, []); // Empty dependency array means this runs once when component mounts
 
   const onSubmit = (values: LeadCaptureValues) => {
     setError(undefined);
@@ -61,7 +79,9 @@ export default function LeadCaptureModal() {
           setError(res.error);
         } else {
           setSubmitted(true);
+          // Mark as submitted/seen immediately
           sessionStorage.setItem(STORAGE_KEY, "true");
+          sessionStorage.setItem(STORAGE_TIMESTAMP_KEY, Date.now().toString());
           setTimeout(() => setShow(false), 3000);
         }
       });
@@ -69,7 +89,9 @@ export default function LeadCaptureModal() {
   };
 
   const handleClose = () => {
-    sessionStorage.setItem(STORAGE_KEY, "true");
+    // Mark as seen even if user closes without submitting
+    sessionStorage.setItem(STORAGE_KEY, "closed");
+    sessionStorage.setItem(STORAGE_TIMESTAMP_KEY, Date.now().toString());
     setShow(false);
   };
 
@@ -372,21 +394,6 @@ export default function LeadCaptureModal() {
                       "Submit"
                     )}
                   </Button>
-                  {/* <button
-                    type="button"
-                    onClick={handleClose}
-                    disabled={isPending}
-                    className="px-4 rounded-lg text-sm font-medium transition-colors"
-                    style={{
-                      border: "1px solid hsl(214 20% 88%)",
-                      color: "#6983a5",
-                      backgroundColor: "transparent",
-                      fontFamily: "Inter, sans-serif",
-                      height: "42px",
-                    }}
-                  >
-                    Skip
-                  </button> */}
                 </div>
 
                 <p

@@ -100,7 +100,7 @@ export default function TeamPage() {
               {teamMembers.map((member) => (
                 <div
                   key={member.id}
-                  className="bg-white rounded-xl overflow-hidden  shadow-sm hover:shadow-lg transition-shadow"
+                  className="bg-white overflow-hidden  shadow-sm hover:shadow-lg transition-shadow"
                 >
                   <div className="relative h-64 overflow-hidden">
                     <Image
