@@ -172,12 +172,12 @@ export const estates: Estate[] = [
     }),
   },
   {
-    id: "sunshine-estate-lugbe",
-    name: "SUNSHINE ESTATE IN LUGBE, AIRPORT ROAD",
-    shortName: "SUNSHINE ESTATE LUGBE",
+    id: "el-praiso-estate-millennium-city-kaduna",
+    name: "EL PRAISO ESTATE, MILLENNIUM CITY, KADUNA",
+    shortName: "EL PRAISO ESTATE",
     coverImage: "/bana4.png",
-    location: "Lugbe, Airport Road, Abuja, FCT",
-    properties: generateProperties("Sunshine Estate Lugbe", "SUNSHINE ESTATE IN LUGBE, AIRPORT R...", {
+    location: "Along Gen. Sani Abacha Way, Millennium City, Off Umaru Musa Yar'Adua Highway, Kaduna, Kaduna State",
+    properties: generateProperties("El P raiso Estate Millennium City Kaduna", "EL PRAISO ESTATE, MILLENNIUM CITY, KADUNA", {
       "250 SQM": "38M",
       "300 SQM": "46M",
       "350 SQM": "53M",
@@ -186,12 +186,12 @@ export const estates: Estate[] = [
     }),
   },
   {
-    id: "prestige-resident-aviation-city",
-    name: "PRESTIGE RESIDENT AVIATION CITY",
-    shortName: "PRESTIGE RESIDENT",
+    id: "samish-residence-millennium-city-kaduna",
+    name: "SAMISH RESIDENCE, MILLENNIUM CITY KADUNA",
+    shortName: "SAMISH RESIDENCE",
     coverImage: "/bana5.png",
-    location: "Aviation City, Abuja, FCT",
-    properties: generateProperties("Prestige Resident Aviation City", "PRESTIGE RESIDENT AVIATION CITY", {
+    location: "Opposite Police Housing Estate, Along Earstern Bypass, Millennium City, Kaduna, Kaduna State",
+    properties: generateProperties("Samish Residence Millennium City Kaduna", "SAMISH RESIDENCE, MILLENNIUM CITY KADUNA", {
       "250 SQM": "65M",
       "300 SQM": "102M",
       "350 SQM": "119M",
