@@ -83,9 +83,9 @@ export default function PropertyCard({ property, variant = "default" }: Property
 
         {/* Price and CTA */}
         <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-          <span className="bg-gold text-navy font-bold px-4 py-2 rounded-full text-sm">
+          {/* <span className="bg-gold text-navy font-bold px-4 py-2 rounded-full text-sm">
             N{property.price}
-          </span>
+          </span> */}
           <Link
             href="/contact-us"
             className="text-navy font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all"
