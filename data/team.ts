@@ -14,7 +14,7 @@ export const teamMembers: TeamMember[] = [
     title: "Chief Executive Officer",
     description: "",
     email: "ceo@samishhomes.com",
-    image: "/team1.png",
+    image: "/team1.jpg",
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ export const teamMembers: TeamMember[] = [
     name: "Mrs. GRACE OYIZA SOLOMON",
     title: "Head of Sales and Marketing",
     description:"", email: "construction@samishhomes.com",
-    image: "/team3.png",
+    image: "/team3.jpg",
   },
   
 ];
