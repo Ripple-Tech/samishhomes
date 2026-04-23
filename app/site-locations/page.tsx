@@ -116,7 +116,7 @@ export default function SiteLocationsPage() {
               transition={{ delay: 0.2 }}
               className="text-white/80 text-lg max-w-2xl mx-auto mb-8"
             >
-              Explore our {siteLocations.filter((l) => !l.comingSoon).length} prime estate locations across Abuja's fastest-growing corridors
+              Explore our  prime estate locations across Abuja's fastest-growing corridors
             </motion.p>
 
             <motion.div

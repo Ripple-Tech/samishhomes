@@ -15,13 +15,13 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div>
-            <span className="text-gold font-semibold text-sm tracking-wider uppercase">
+            <span className="text-gold font-display font-semibold text-sm tracking-tight uppercase">
               Welcome to Samish Homes
             </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy mt-4 mb-2">
-              Building Dreams,
+              Actualizing Dreams,
               <br />
-              <span className="text-gold">Creating Legacies</span>
+              <span className="text-gold">Generating Legacies</span>
             </h2>
             <p className="text-navy/70 mt-6 leading-relaxed">
               Samish Homes and Apartments is Abuja premier Real Estate company,

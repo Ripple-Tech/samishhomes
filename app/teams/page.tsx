@@ -27,9 +27,9 @@ export default function TeamPage() {
             <span className="inline-block px-6 py-2 bg-gold text-navy font-semibold text-sm tracking-wider rounded-full mb-6">
               MEET OUR TEAM
             </span>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+            {/* <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
               The People Behind <span className="text-gold italic">Samish Homes</span>
-            </h1>
+            </h1> */}
             <p className="text-white/80 text-lg max-w-2xl mx-auto mb-8">
               Our dedicated team of professionals is committed to delivering exceptional real estate
               experiences. Meet the experts who make your dream home a reality.
@@ -116,13 +116,9 @@ export default function TeamPage() {
                     <p className="text-navy/60 text-sm leading-relaxed mb-4 line-clamp-3">
                       {member.description}
                     </p>
-                    {/* <a
-                      href={`mailto:${member.email}`}
-                      className="flex items-center gap-2 text-navy/70 text-sm hover:text-navy transition-colors"
-                    >
-                      <Mail size={14} />
-                      <span>{member.email}</span>
-                    </a> */}
+                    {/* <div className="flex items-center gap-2 text-navy/70 text-sm hover:text-navy transition-colors">
+                      {member.email}
+                   </div>  */}
                   </div>
                 </div>
               ))}
