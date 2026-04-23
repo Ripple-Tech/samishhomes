@@ -258,7 +258,7 @@ export default function SiteLocationsPage() {
                           <div className="grid grid-cols-3 gap-2 px-4 py-4 border-b border-gray-100">
                             {[
                               { label: "Units", value: loc.properties.length.toString() },
-                              { label: "From", value: loc.properties.length > 0 ? `₦${loc.properties[0].price}` : "—" },
+                              // { label: "From", value: loc.properties.length > 0 ? `₦${loc.properties[0].price}` : "—" },
                               { label: "Types", value: [...new Set(loc.properties.map((p) => p.type))].length.toString() },
                             ].map((s) => (
                               <div key={s.label} className="text-center bg-navy-50 rounded-lg py-2 px-1">
@@ -291,7 +291,7 @@ export default function SiteLocationsPage() {
                                   </div>
                                 </div>
                                 <div className="text-right flex-shrink-0">
-                                  <p className="font-display font-bold text-navy text-sm">₦{prop.price}</p>
+                                  {/* <p className="font-display font-bold text-navy text-sm">₦{prop.price}</p> */}
                                   <span className="inline-block px-1.5 py-0.5 bg-green-50 text-green-700 text-xs rounded-full">Available</span>
                                 </div>
                               </motion.div>
@@ -451,10 +451,10 @@ export default function SiteLocationsPage() {
                       <div className="grid grid-cols-3 gap-4 mb-8">
                         {[
                           { label: "Total Units", value: activeLocation.properties.length.toString() },
-                          {
-                            label: "Starting From",
-                            value: activeLocation.properties.length > 0 ? `₦${activeLocation.properties[0].price}` : "—",
-                          },
+                          // {
+                          //   label: "Starting From",
+                          //   value: activeLocation.properties.length > 0 ? `₦${activeLocation.properties[0].price}` : "—",
+                          // },
                           {
                             label: "Property Types",
                             value: [...new Set(activeLocation.properties.map((p) => p.type))].length.toString(),
@@ -490,7 +490,7 @@ export default function SiteLocationsPage() {
                                 </div>
                               </div>
                               <div className="text-right flex-shrink-0">
-                                <p className="font-display font-bold text-navy text-base">₦{prop.price}</p>
+                                {/* <p className="font-display font-bold text-navy text-base">₦{prop.price}</p> */}
                                 <span className="inline-block px-2 py-0.5 bg-green-50 text-green-700 text-xs font-medium rounded-full mt-1">Available</span>
                               </div>
                             </motion.div>

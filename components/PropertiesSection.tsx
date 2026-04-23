@@ -139,7 +139,7 @@ export default function PropertiesSection() {
                 </div>
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                   <span className="bg-navy text-white font-bold px-4 py-2 rounded-full text-sm">
-                    N{property.price}
+                    {/* N{property.price} */}
                   </span>
                   <Link
                     href="/properties"
