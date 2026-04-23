@@ -183,7 +183,7 @@ export default function AboutPage() {
                 </div>
 
                 <h2 className="font-display text-3xl sm:text-4xl font-bold text-navy leading-tight">
-                  Nigeria's Most Trusted Real Estate Developer
+                  Nigeria's Most Reliable Real Estate Development Services
                 </h2>
 
                 <p className="text-navy/70 leading-relaxed">
