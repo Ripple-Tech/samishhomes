@@ -231,7 +231,7 @@ export default function AboutPage() {
               >
                 <div className="relative h-[460px] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="https://ext.same-assets.com/2617002787/3173310862.jpeg"
+                    src="/hillcity1.jpg"
                     alt="Samish Homes Estate"
                     fill
                     className="object-cover"
