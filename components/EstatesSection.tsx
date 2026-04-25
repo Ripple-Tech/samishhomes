@@ -73,7 +73,7 @@ export default function EstatesSection() {
                 <h3 className="font-display font-bold text-navy text-lg mb-2">{estate.name}</h3>
                 <p className="text-navy/60 text-sm mb-4 line-clamp-2">{estate.description}</p>
                 <Link
-                  href={`/site-locations/${estate.id}`}
+                  href={'/site-locations'}
                   className="text-gold font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all"
                 >
                   View Details <ArrowRight size={16} />
