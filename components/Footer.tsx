@@ -46,7 +46,7 @@ export default function Footer() {
             </Link>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
               Your trusted partner in premium real estate across Abuja. We deliver exceptional
-              properties that combine luxury, comfort, and value.
+              properties that combine luxury, comfort, and value, with rest of mind.
             </p>
             <div className="flex gap-3">
               <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors">
@@ -113,10 +113,10 @@ export default function Footer() {
               <li className="flex gap-3">
                 <MapPin className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                 <span className="text-white/70 text-sm">
-                Abuja Head Office: SUITE SF 4, Hatlab Place, Plot 1952, Sokode Crescent, Zone 5, Wuse, Abuja, Nigeria.
+                Abuja Head Office:<br/> SUITE SF 4, Hatlab Place, Plot 1952, Sokode Crescent, Zone 5, Wuse, Abuja, Nigeria.
                 </span>
                 <span className="text-white/70 text-sm">
-                Kaduna Office: SUITE 7, Fatima Mall, Opp Shafa Filling Station, Umaru Musa Yar'adua Way, Millenium City, Kaduna, Nigeria.
+                Kaduna Office:<br/> SUITE 7, Fatima Mall, Opp Shafa Filling Station, Umaru Musa Yar'adua Way, Millenium City, Kaduna, Nigeria.
                 </span>
               </li>
               <li className="flex gap-3">

@@ -13,7 +13,7 @@ const properties = [
     baths: 3,
     area: 250,
     price: "45M",
-    image: "https://ext.same-assets.com/2617002787/1003212119.jpeg",
+    image: "/terrace.jpg",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const properties = [
     baths: 4,
     area: 300,
     price: "54M",
-    image: "https://ext.same-assets.com/2617002787/1994372926.jpeg",
+    image: "/semidetached.jpg",
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ const properties = [
     baths: 4,
     area: 350,
     price: "63M",
-    image: "https://ext.same-assets.com/2617002787/4026451409.jpeg",
+    image: "/detached.jpg",
   },
   {
     id: 4,
@@ -49,7 +49,7 @@ const properties = [
     baths: 5,
     area: 500,
     price: "90M",
-    image: "https://ext.same-assets.com/2617002787/3904350765.jpeg",
+    image: "/bana1.png",
   },
   {
     id: 5,
@@ -61,7 +61,7 @@ const properties = [
     baths: 6,
     area: 1000,
     price: "180M",
-    image: "https://ext.same-assets.com/2617002787/4001650424.jpeg",
+    image: "/bana2.png",
   },
   {
     id: 6,
@@ -73,7 +73,7 @@ const properties = [
     baths: 3,
     area: 250,
     price: "65M",
-    image: "https://ext.same-assets.com/2617002787/1319706308.jpeg",
+    image: "/bana3.png",
   },
 ];
 

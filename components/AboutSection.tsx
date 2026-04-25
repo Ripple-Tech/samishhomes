@@ -62,7 +62,7 @@ export default function AboutSection() {
           <div className="relative">
             <div className="relative">
               <img
-                src="https://ext.same-assets.com/2617002787/2940095684.jpeg"
+                src="/bana2.png"
                 alt="Luxury Property"
                 className="rounded-lg shadow-xl w-full h-[500px] object-cover"
               />
