@@ -47,7 +47,7 @@ export default function EstatesSection() {
             Prime <span className="text-gold">Site Locations</span>
           </h2>
           <p className="text-navy/70 max-w-2xl mx-auto">
-            Explore our carefully selected estates across Abuja&apos;s most desirable neighborhoods
+            Explore our prime estate locations across Abuja&apos;s fastest-growing corridors
           </p>
         </div>
 

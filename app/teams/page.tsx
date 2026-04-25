@@ -112,8 +112,12 @@ export default function TeamPage() {
                   </div>
                   <div className="p-5 flex flex-col items-center text-center">
                     <h3 className="font-display font-bold text-navy text-lg">{member.name}</h3>
-                    <p className="text-gold font-medium text-sm mb-3">{member.title}</p>
-                    <p className="text-navy/60 text-sm leading-relaxed mb-4 line-clamp-3">
+                    <p className="text-gold font-medium text-sm mb-1">{member.title}</p>
+                    <p className="text-navy/60 text-sm leading-relaxed mb-2 line-clamp-3">
+                      {member.qualifications}
+                    </p>
+                  
+                    <p className="text-navy/60 text-[13px] leading-relaxed mb-2 line-clamp-4">
                       {member.description}
                     </p>
                     {/* <div className="flex items-center gap-2 text-navy/70 text-sm hover:text-navy transition-colors">
