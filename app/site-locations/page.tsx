@@ -10,22 +10,19 @@ import Footer from "@/components/Footer";
 import { estates } from "@/data/properties";
 
 // ─── Ordered estate list per requirements ─────────────────────────────────────
-// Map from display name → data id
 const ESTATE_ORDER = [
   { displayName: "Hillcity Residence",          id: "hillcity-residence" },
   { displayName: "Sterling Heights Ridge City", id: "sterling-heights-ridge-city-guzape" },
-  { displayName: "Samish Onyx Homes",           id: "samish-onyx-homes" }, 
-  { displayName: "Hill View Residence",         id: "hill-view-residence" }, 
+  { displayName: "Samish Onyx Homes",           id: "samish-onyx-homes" },
+  { displayName: "Hill View Residence",         id: "hill-view-residence" },
   { displayName: "Samish Homesphere Karsana",   id: "samish-homesphere-karsana" },
   { displayName: "Stardom City Estate",         id: "stardom-city-kurudu-jikwoyi" },
   { displayName: "Starlight Estate Lugbe",      id: "starlight-estate-lugbe" },
 ];
 
-// Also include estates in data that aren't in the ordered list
 const orderedIds = ESTATE_ORDER.map((e) => e.id).filter(Boolean);
 const extraEstates = estates.filter((e) => !orderedIds.includes(e.id));
 
-// Build full site-location list
 const siteLocations = [
   ...ESTATE_ORDER.map((item) => {
     if (!item.id) {
@@ -33,9 +30,10 @@ const siteLocations = [
         id: item.displayName.toLowerCase().replace(/\s+/g, "-"),
         displayName: item.displayName,
         location: "Abuja, FCT",
-        properties: [],
+        description: undefined as string | undefined,
+        properties: [] as typeof estates[0]["properties"],
         comingSoon: true,
-        coverImage: null,
+        coverImage: null as string | null,
       };
     }
     const estate = estates.find((e) => e.id === item.id)!;
@@ -43,9 +41,10 @@ const siteLocations = [
       id: estate.id,
       displayName: item.displayName,
       location: estate.location,
+      description: estate.description,
       properties: estate.properties,
       comingSoon: false,
-      coverImage: estate.coverImage  ?? null,
+      coverImage: estate.coverImage ?? null,
     };
   }),
   ...extraEstates.map((estate) => ({
@@ -55,6 +54,7 @@ const siteLocations = [
       .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
       .join(" "),
     location: estate.location,
+    description: estate.description,
     properties: estate.properties,
     comingSoon: false,
     coverImage: estate.properties[0]?.image ?? null,
@@ -116,7 +116,7 @@ export default function SiteLocationsPage() {
               transition={{ delay: 0.2 }}
               className="text-white/80 text-lg max-w-2xl mx-auto mb-8"
             >
-              Explore our  prime estate locations across Abuja's fastest-growing corridors
+              Explore our prime estate locations across Abuja's fastest-growing corridors
             </motion.p>
 
             <motion.div
@@ -171,7 +171,7 @@ export default function SiteLocationsPage() {
               </h2>
             </motion.div>
 
-            {/* ── MOBILE: accordion (hidden on lg+) ── */}
+            {/* ── MOBILE: accordion ── */}
             <div className="lg:hidden space-y-3">
               {siteLocations.map((loc, i) => {
                 const isOpen = activeId === loc.id;
@@ -231,7 +231,7 @@ export default function SiteLocationsPage() {
                       )}
                     </button>
 
-                    {/* Accordion body — units inline */}
+                    {/* Accordion body */}
                     <AnimatePresence initial={false}>
                       {isOpen && !loc.comingSoon && (
                         <motion.div
@@ -254,11 +254,17 @@ export default function SiteLocationsPage() {
                             </div>
                           )}
 
+                          {/* Description */}
+                          {loc.description && (
+                            <div className="px-4 pt-4 pb-2">
+                              <p className="text-navy/60 text-sm leading-relaxed">{loc.description}</p>
+                            </div>
+                          )}
+
                           {/* Mini stats */}
-                          <div className="grid grid-cols-3 gap-2 px-4 py-4 border-b border-gray-100">
+                          <div className="grid grid-cols-2 gap-2 px-4 py-4 border-b border-gray-100">
                             {[
                               { label: "Units", value: loc.properties.length.toString() },
-                              // { label: "From", value: loc.properties.length > 0 ? `₦${loc.properties[0].price}` : "—" },
                               { label: "Types", value: [...new Set(loc.properties.map((p) => p.type))].length.toString() },
                             ].map((s) => (
                               <div key={s.label} className="text-center bg-navy-50 rounded-lg py-2 px-1">
@@ -291,7 +297,6 @@ export default function SiteLocationsPage() {
                                   </div>
                                 </div>
                                 <div className="text-right flex-shrink-0">
-                                  {/* <p className="font-display font-bold text-navy text-sm">₦{prop.price}</p> */}
                                   <span className="inline-block px-1.5 py-0.5 bg-green-50 text-green-700 text-xs rounded-full">Available</span>
                                 </div>
                               </motion.div>
@@ -322,7 +327,7 @@ export default function SiteLocationsPage() {
               })}
             </div>
 
-            {/* ── DESKTOP: sidebar + detail panel (hidden below lg) ── */}
+            {/* ── DESKTOP: sidebar + detail panel ── */}
             <div className="hidden lg:flex gap-8">
 
               {/* Left: Estate List */}
@@ -403,7 +408,12 @@ export default function SiteLocationsPage() {
                           className="relative rounded-xl overflow-hidden h-32 group text-left"
                         >
                           {loc.coverImage && (
-                            <Image src={loc.coverImage} alt={loc.displayName} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <Image
+                              src={loc.coverImage}
+                              alt={loc.displayName}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
                           )}
                           <div className="absolute inset-0 bg-navy/60 group-hover:bg-navy/50 transition-colors" />
                           <div className="absolute inset-0 p-4 flex flex-col justify-end">
@@ -424,9 +434,15 @@ export default function SiteLocationsPage() {
                     transition={{ duration: 0.35 }}
                     className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm"
                   >
+                    {/* Cover image */}
                     <div className="relative h-56 sm:h-72">
                       {activeLocation.coverImage ? (
-                        <Image src={activeLocation.coverImage} alt={activeLocation.displayName} fill className="object-cover" />
+                        <Image
+                          src={activeLocation.coverImage}
+                          alt={activeLocation.displayName}
+                          fill
+                          className="object-cover"
+                        />
                       ) : (
                         <div className="h-full bg-navy-100 flex items-center justify-center">
                           <Building2 size={48} className="text-navy/20" />
@@ -448,13 +464,17 @@ export default function SiteLocationsPage() {
                     </div>
 
                     <div className="p-6">
-                      <div className="grid grid-cols-3 gap-4 mb-8">
+                      {/* Description */}
+                      {activeLocation.description && (
+                        <p className="text-navy/60 text-sm leading-relaxed mb-6 border-l-2 border-gold pl-4">
+                          {activeLocation.description}
+                        </p>
+                      )}
+
+                      {/* Stats */}
+                      <div className="grid grid-cols-2 gap-4 mb-8">
                         {[
                           { label: "Total Units", value: activeLocation.properties.length.toString() },
-                          // {
-                          //   label: "Starting From",
-                          //   value: activeLocation.properties.length > 0 ? `₦${activeLocation.properties[0].price}` : "—",
-                          // },
                           {
                             label: "Property Types",
                             value: [...new Set(activeLocation.properties.map((p) => p.type))].length.toString(),
@@ -467,6 +487,7 @@ export default function SiteLocationsPage() {
                         ))}
                       </div>
 
+                      {/* Available Units */}
                       <div className="mb-6">
                         <h4 className="font-display font-bold text-navy text-lg mb-4">Available Units</h4>
                         <div className="space-y-3">
@@ -476,7 +497,7 @@ export default function SiteLocationsPage() {
                               initial={{ opacity: 0, x: 10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: i * 0.06 }}
-                              className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-gold hover:shadow-sm transition-all group"
+                              className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-gold hover:shadow-sm transition-all"
                             >
                               <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                                 <Image src={prop.image} alt={prop.title} fill className="object-cover" />
@@ -490,14 +511,14 @@ export default function SiteLocationsPage() {
                                 </div>
                               </div>
                               <div className="text-right flex-shrink-0">
-                                {/* <p className="font-display font-bold text-navy text-base">₦{prop.price}</p> */}
-                                <span className="inline-block px-2 py-0.5 bg-green-50 text-green-700 text-xs font-medium rounded-full mt-1">Available</span>
+                                <span className="inline-block px-2 py-0.5 bg-green-50 text-green-700 text-xs font-medium rounded-full">Available</span>
                               </div>
                             </motion.div>
                           ))}
                         </div>
                       </div>
 
+                      {/* CTA Buttons */}
                       <div className="flex flex-col sm:flex-row gap-3">
                         <Link
                           href={`/properties?location=${activeLocation.id}`}
@@ -522,7 +543,7 @@ export default function SiteLocationsPage() {
           </div>
         </section>
 
-        {/* ── All Locations Map Grid ── */}
+        {/* ── All Locations Grid ── */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -555,7 +576,6 @@ export default function SiteLocationsPage() {
                   className={`relative rounded-2xl overflow-hidden group ${loc.comingSoon ? "opacity-60" : ""}`}
                   style={{ height: "240px" }}
                 >
-                  {/* background image */}
                   {loc.coverImage ? (
                     <Image
                       src={loc.coverImage}
@@ -567,17 +587,14 @@ export default function SiteLocationsPage() {
                     <div className="absolute inset-0 bg-navy-200" />
                   )}
 
-                  {/* gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent" />
 
-                  {/* Coming soon badge */}
                   {loc.comingSoon && (
                     <div className="absolute top-3 right-3 px-2.5 py-1 bg-gold text-navy text-xs font-bold rounded-full">
                       Coming Soon
                     </div>
                   )}
 
-                  {/* content */}
                   <div className="absolute inset-0 p-5 flex flex-col justify-end">
                     <div className="flex items-start justify-between gap-2">
                       <div>
@@ -597,7 +614,10 @@ export default function SiteLocationsPage() {
                     {!loc.comingSoon && (
                       <button
                         type="button"
-                        onClick={() => { setActiveId(loc.id); window.scrollTo({ top: 600, behavior: "smooth" }); }}
+                        onClick={() => {
+                          setActiveId(loc.id);
+                          window.scrollTo({ top: 600, behavior: "smooth" });
+                        }}
                         className="mt-3 w-full py-2 rounded-lg text-xs font-semibold bg-gold text-navy opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
                       >
                         Explore Estate →
