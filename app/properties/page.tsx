@@ -7,7 +7,7 @@ import { MapPin } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
-import { estates, locations, sizes, allProperties } from "@/data/properties";
+import { estates, locations, sizes } from "@/data/properties";
 
 export default function PropertiesPage() {
   const [selectedLocation, setSelectedLocation] = useState("all");
@@ -21,10 +21,12 @@ export default function PropertiesPage() {
     }
 
     if (selectedSize) {
-      result = result.map((estate) => ({
-        ...estate,
-        properties: estate.properties.filter((prop) => prop.size === selectedSize),
-      })).filter((estate) => estate.properties.length > 0);
+      result = result
+        .map((estate) => ({
+          ...estate,
+          properties: estate.properties.filter((prop) => prop.size === selectedSize),
+        }))
+        .filter((estate) => estate.properties.length > 0);
     }
 
     return result;
@@ -59,10 +61,12 @@ export default function PropertiesPage() {
               Our <span className="text-gold italic">Properties</span>
             </h1>
             <p className="text-white/80 text-lg max-w-2xl mx-auto mb-8">
-              Browse all available properties across our 8 prime estates in Abuja
+              Browse all available properties across our prime estates in Abuja
             </p>
             <div className="flex items-center justify-center gap-2 text-white/80">
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <Link href="/" className="hover:text-white transition-colors">
+                Home
+              </Link>
               <span className="text-white/50">›</span>
               <span className="text-gold">Properties</span>
             </div>
@@ -141,8 +145,8 @@ export default function PropertiesPage() {
               filteredEstates.map((estate) => (
                 <div key={estate.id} className="mb-16 last:mb-0">
                   {/* Estate Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 pb-4 border-b border-gray-200">
-                    <div>
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6 pb-4 border-b border-gray-200">
+                    <div className="flex-1">
                       <h2 className="font-display font-bold text-navy text-2xl uppercase">
                         {estate.name}
                       </h2>
@@ -150,10 +154,15 @@ export default function PropertiesPage() {
                         <MapPin size={14} />
                         <span>{estate.location}</span>
                       </div>
+                      {estate.description && (
+                        <p className="text-navy/60 text-sm mt-3 max-w-3xl leading-relaxed">
+                          {estate.description}
+                        </p>
+                      )}
                     </div>
                     <Link
                       href={`/properties?location=${estate.id}`}
-                      className="text-gold font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all"
+                      className="text-gold font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all shrink-0"
                     >
                       View All <span>→</span>
                     </Link>
@@ -161,9 +170,11 @@ export default function PropertiesPage() {
 
                   {/* Properties Grid */}
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {estate.properties.slice(0, selectedLocation === "all" ? 5 : undefined).map((property) => (
-                      <PropertyCard key={property.id} property={property} />
-                    ))}
+                    {estate.properties
+                      .slice(0, selectedLocation === "all" ? 5 : undefined)
+                      .map((property) => (
+                        <PropertyCard key={property.id} property={property} />
+                      ))}
                   </div>
                 </div>
               ))
